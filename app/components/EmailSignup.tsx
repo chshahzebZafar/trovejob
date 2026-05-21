@@ -19,18 +19,18 @@ export default function EmailSignup() {
 
   if (status === "success") {
     return (
-      <p
-        style={{
-          fontFamily:    "var(--mono)",
-          fontWeight:    300,
-          fontSize:      "13px",
-          letterSpacing: "0.04em",
-          color:         "var(--gold)",
-          animation:     "fadeUp 0.5s ease both",
-        }}
-      >
-        ↳ You&apos;re on the list.
-      </p>
+      <div style={{
+        height: 52, display: "flex", alignItems: "center", justifyContent: "center",
+        border: "1px solid var(--hairline)", borderRadius: 100,
+        background: "rgba(184,145,58,0.07)",
+      }}>
+        <span style={{
+          fontFamily: "var(--mono)", fontWeight: 300, fontSize: 12,
+          letterSpacing: "0.08em", color: "var(--gold)",
+        }}>
+          ↳ You&apos;re on the list.
+        </span>
+      </div>
     );
   }
 
@@ -38,12 +38,12 @@ export default function EmailSignup() {
     <form
       onSubmit={handleSubmit}
       style={{
-        display:     "flex",
-        width:       "100%",
-        border:      "1px solid var(--hairline)",
-        borderRadius: "2px",
-        overflow:    "hidden",
-        background:  "rgba(255,255,255,0.45)",
+        display: "flex", width: "100%",
+        border: "1px solid var(--hairline)",
+        borderRadius: 100,
+        overflow: "hidden",
+        background: "rgba(255,255,255,0.03)",
+        transition: "border-color 0.2s",
       }}
     >
       <input
@@ -53,35 +53,33 @@ export default function EmailSignup() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         style={{
-          flex:          1,
-          padding:       "13px 16px",
-          fontFamily:    "var(--mono)",
-          fontWeight:    300,
-          fontSize:      "13px",
-          letterSpacing: "0.03em",
-          color:         "var(--ink)",
-          background:    "transparent",
-          border:        "none",
-          outline:       "none",
+          flex: 1,
+          padding: "14px 22px",
+          fontFamily: "var(--mono)", fontWeight: 300,
+          fontSize: 13, letterSpacing: "0.03em",
+          color: "var(--ink)",
+          background: "transparent",
+          border: "none", outline: "none",
         }}
       />
       <button
         type="submit"
         disabled={status === "loading"}
         style={{
-          padding:       "13px 22px",
-          fontFamily:    "var(--mono)",
-          fontWeight:    300,
-          fontSize:      "11px",
-          letterSpacing: "0.12em",
+          margin: 4,
+          padding: "10px 22px",
+          fontFamily: "var(--mono)", fontWeight: 300,
+          fontSize: 11, letterSpacing: "0.14em",
           textTransform: "uppercase",
-          color:         "#f5f0e8",
-          background:    "#1a1714",
-          border:        "none",
-          cursor:        status === "loading" ? "default" : "pointer",
-          opacity:       status === "loading" ? 0.6 : 1,
-          transition:    "opacity 0.15s",
-          whiteSpace:    "nowrap",
+          color: "#f5f0e8",
+          background: status === "loading"
+            ? "rgba(200,169,94,0.5)"
+            : "var(--gold)",
+          border: "none",
+          borderRadius: 100,
+          cursor: status === "loading" ? "default" : "pointer",
+          transition: "background 0.2s, opacity 0.2s",
+          whiteSpace: "nowrap",
         }}
       >
         {status === "loading" ? "…" : "Notify me"}
